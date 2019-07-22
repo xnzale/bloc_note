@@ -1,0 +1,92 @@
+ORM Doctrine
+****  Creer une base de donnee :php bin/console doctrine:database:create
+**** Creer une table (entité)
+php bin/console make:entity
+Dans le dossier entity , la table Creer y figure (ok SUCCESS)
+
+**** Creer les cles et migration dans la base de donnee
+ php bin/console make:migration
+
+*****  Script de migration 
+
+ php bin/console doctrine:migrations:migrate
+******* Installer fixtures
+composer require orm-fixtures --dev
+********
+
+php bin/console make:fixtures (fichier se touve dans DataFixtures)
+******  charger les fixtures 
+php bin/console doctrine:fixtures:load
+--------------------------- Projet transfert d'argent ----------------
+
+& Partenariat avec des entreprises prestataires(inscrire un partenaire avec tous ses donnees)
+& Chaque partenaire a un compte et fait des depots sur le compte(envoi-diminue, retrait--augmente)
+& gestion des commissions (envoie et retrait)
+les tarifs (voir ceux de wari)
+frais(etat 30% )vous(40%) prestataires(retrait(20%) envoi(10%))
+code d'envoi(par sms , generer et unique)
+utiliser postmoney
+
+&chaque partenaire peut creer ses users (02 partenaires et  05 users)
+On peut bloquer un partenaires (si mp et login correcte , on lui dit bloquer veuillez contactez l'admin) et Afficher la liste des partenaires bloquer
+seul le super_utilisateur peut loquer un user
+&Afficher vos partenaires sur le google maps 
+imprimer  les reçue
+& Afficher les transactions faites par les users par periode (paginer avec possibilite de recherche)
+chaque user peut voir les operations qu'il a faites par periode (date debut et date fin)
+& Chaque admin(partenaire ) peut consulter toutes les operations d'un user, les commissions(user) ou de façon global
+&Consulter les taxes à verser à l'etat(admin system)
+&Consulter les commissions propres par periode(pdf)
+& Afficher le graphique des commissions propres par mois(exporter sur excel)
+
+
+****************   Cle passe Jenkins       *********************
+4eeeed44f62e4ed3a6a734c075eeb5c1
+
+************ CHOOSE JAVA BY DEFAULT SYSTEM  *************
+sudo update-alternatives --config java
+
+/********** CONCERNANT SONAR ***************
+/Bureau/xa/projectone$ /opt/sonarscanner/sonar-scanner-3.2.0.1227-linux/bin/sonar-scanner \
+>   -Dsonar.projectKey=push \
+>   -Dsonar.sources=. \
+>   -Dsonar.host.url=http://localhost:9000 \
+>   -Dsonar.login=8c4312b54d8390495a55e49904019a9a138ec9cd
+COLLER d'abord le fichier scanner du dossier bin puis ajouter mr copie du code du projet creer
+
+5b8ae93da82492974ca0d3aad3aeb8fb53c13cbf
+
+51dabaa516c957e6e4fb566401a7b890639912a6
+
+*********** BUILD ***********
+badara la def ci yeuf yi: mp: kunya
+# Métadonnées requises
+#projectKey doit être unique dans une instance SonarQube donnée
+sonar.projectKey = java-sonar-runner-simple
+#Il s'agit du nom et de la version affichés dans l'interface utilisateur SonarQube.
+sonar.projectName = projet analysé avec le SonarQube Runner
+sonar.projectVersion = 1.0
+# Chemins séparés par des virgules vers des répertoires avec des sources (obligatoire)
+#path est relatif au fichier sonar-project.properties. Remplacez «\» par «/» sous Windows.
+#Since SonarQube 4.2, cette propriété est facultative si sonar.modules est défini.
+#Si non défini, SonarQube commence à rechercher le code source dans le répertoire contenant le
+# fichier sonar-project.properties.
+sonar.sources =.
+# Encodage des fichiers source
+sonar.sourceEncoding = UTF-8
+
+
+
+
+*************************************************
+pour manier SonarQube
+command systemctl start sonar.service
+command systemctl stop sonar.service
+command systemctl restart sonar.service
+********************** localhost
+http://localhost:8082/index.nginx-debian.html
+
+*********************
+kvsHhzJeCT7dVsJ        ----- mp docker
+*********************************** tester le port nginx
+sudo netstat -tlpn| grep nginx ; ss -tlpn| grep nginx
